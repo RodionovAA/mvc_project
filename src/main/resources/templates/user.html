@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+    <h1>Input user</h1>
+    <form action="#" th:action="@{/user}" th:object="${resp}" method="GET">
+        <p>Server message: <output type="text"  th:field="*{mess}" /></p>
+    </form>
+    <form action="#" th:action="@{/user}" id="form_id" th:object="${user}" method="POST" onsubmit="javascript:return validate('form_id');">
+        <p>Name: <input type="text" id="name" th:field="*{name}" /></p>
+        <p>Last Name: <input type="text" id="lastname" th:field="*{lastName}" /></p>
+        <p>Patronymic: <input type="text" th:field="*{patronymic}" /></p>
+        <p>Age: <input type="text" id="age" th:field="*{age}" /></p>
+        <p>Salary <input type="number" th:field="*{salary}" /></p>
+        <p>Address: <input type="text" th:field="*{address}" /></p>
+        <p>Email: <input type="text" id="email" th:field="*{email}" /> <button name="sender" value="send">Send Mail</button></p>
+        <p>Work Place: <input type="text" th:field="*{workPlace}" /></p>
+        <p><input type="submit" name="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+    <h1>Find User</h1>
+    <form action="#" th:action="@{/user}" th:object="${user}" method="GET">
+        <p>Name: <input type="text" th:field="*{name}" /></p>
+        <p>Last Name: <input type="text" th:field="*{lastName}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+    <p><a href="/">On main page</a></p>
+    <script>
+        function validate(form_id) {
+            var reg = /^([A-Za-zА-Яа-я]{2,})$/;
+            var name = document.forms[form_id].elements['name'].value;
+            if(reg.test(name) == false) {
+                alert('Wrong input name');
+                return false;
+            }
+            var lastname = document.forms[form_id].elements['lastname'].value;
+            if(reg.test(lastname) == false) {
+                alert('Wrong input lastname');
+                return false;
+            }
+            var reg1 = /^([1-9][0-9]{0,2})$/;
+            var age = document.forms[form_id].elements['age'].value;
+            if(reg1.test(age) == false) {
+                alert('Wrong input age');
+                return false;
+            }
+            var reg2 = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+            var address = document.forms[form_id].elements['email'].value;
+            if(reg2.test(address) == false) {
+                alert('Wrong input email');
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Send message</title>
+</head>
+<body>
+<h1>Send mail for user</h1>
+<form action="#" th:action="@{/send}" id="form_id" th:object="${message}" method="POST" >
+        <p>Email: <input type="text" id="email_id" name="email" th:field="*{receiver}" /></p>
+        <p>Subject: <input type="text"  name="subj" th:field="*{subject}" /></p>
+        <p>Message text</p>
+        <p><textarea id="testField" style="width:700px;height:400px;" th:field="*{text}"></textarea></p>
+        <p><input type="submit" value="Sendmess"> Press here to send mail!</p>
+    </form>
+    <p><a href="/user">Back</a></p>
+    <p><a href="/">On main page</a></p>
+</body>
+</html>
+</html>

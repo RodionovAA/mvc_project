@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>load file</title>
+</head>
+<body>
+    <h1>Load file with user's info</h1>
+    <form method="POST" enctype="multipart/form-data" action="/load">
+        File to upload: <input type="file" id="myFile" name="file" onchange="readFile(this)" ><br />
+        <textarea id="testField" style="width:700px;height:400px;"></textarea>
+        <script>
+            function readFile(input){
+                var file = input.files[0]
+                var reader = new FileReader()
+                reader.onload = function() {
+                    document.getElementById('testField').innerHTML = reader.result;
+                }
+                reader.readAsText(file);
+            }
+        </script>
+        <p><input type="submit" value="Press here to upload the fil"></p>
+    </form>
+    <p><a href="/">On main page</a></p>
+</body>
+</html>
