@@ -2,10 +2,7 @@ package ru.mycompany.mvc_project;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.mail.*;
 import javax.mail.internet.AddressException;
@@ -17,7 +14,7 @@ import java.util.Properties;
 
 @Controller
 public class SenderController {
-    @RequestMapping(value="/send", method= RequestMethod.POST)
+    @PostMapping(value="/send")
     public String UserSubmit(@RequestParam Map<String,String> allRequestParams) {
 
         Properties properties = new Properties();
@@ -59,7 +56,7 @@ public class SenderController {
         }
         return  "result";
     }
-    @RequestMapping(value = {"/send", "/send/"}, method = RequestMethod.GET)
+    @GetMapping(value = {"/send", "/send/"})
     public String search(@RequestParam Map<String,String> allRequestParams, ModelMap model){
         MyMessage mes = new MyMessage();
         mes.setReceiver(allRequestParams.get("receiver"));

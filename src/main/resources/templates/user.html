@@ -6,8 +6,7 @@
 </head>
 <body>
     <h1>Input user</h1>
-    <form action="#" th:action="@{/user}" th:object="${resp}" method="GET">
-        <p>Server message: <output type="text"  th:field="*{mess}" /></p>
+        <p th:text="'Server message: ' + ${resp.mess}" />
     </form>
     <form action="#" th:action="@{/user}" id="form_id" th:object="${user}" method="POST" onsubmit="javascript:return validate('form_id');">
         <p>Name: <input type="text" id="name" th:field="*{name}" /></p>

@@ -1,7 +1,7 @@
 package ru.mycompany.mvc_project;
 
 public class MyResp {
-    String mess = "hel";
+    String mess;
 
     public String getMess() {
         return mess;
