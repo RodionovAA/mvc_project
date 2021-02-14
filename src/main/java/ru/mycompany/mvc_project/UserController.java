@@ -85,6 +85,11 @@ public class UserController {
 
     @GetMapping(value = {"/user", "/user/"})
     public String search(@RequestParam Map<String,String> allRequestParams, ModelMap model,  HttpServletRequest request) {
+        if (! new File("users.txt").exists()){
+            model.addAttribute("user",new User());
+            model.addAttribute("resp",new MyResp());
+            return "user";
+        }
         String userAgent = request.getHeader("User-Agent");
         userAgent += new Date().toString();
         MyResp myResp = new MyResp();
@@ -92,6 +97,7 @@ public class UserController {
         myResp.setMess(userAgent+new Date().toString());
         model.addAttribute("resp",myResp);
         boolean flag = false;
+
         try {
             FileReader reader = new FileReader("users.txt");
             BufferedReader br = new BufferedReader(reader);
